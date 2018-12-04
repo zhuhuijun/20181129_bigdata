@@ -44,7 +44,7 @@ public class TestFileSystem
 	public void writeFile() throws Exception
 	{
 		// hdfs dfs -chmod 777 /user/ubuntu
-		Path f = new Path("hdfs://s100:8020/user/ubuntu/uu.txt");
+		Path f = new Path("hdfs://s100:8020/user/ubuntu/uyyu442.txt");
 		FSDataOutputStream fsDataOutputStream = fileSystem.create(f);
 		fsDataOutputStream.write("hello,world".getBytes());
 		fsDataOutputStream.close();
