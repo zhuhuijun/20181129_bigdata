@@ -46,3 +46,13 @@ hadoop discp hdfs://namenode1/foo hafs://namenode2/foo
 >- ZipInputStream 解压缩
 >- ZipOutputStream 压缩
 >- ZipEntry 压缩条目
+
+>- /lib目录存放共享库  /lib64 
+>- /lib下的lib是各个厂商的共享库
+>- /usr/lib 是个个人的
+>- cd /etc    ls | grep so
+>- ld.so.conf
+>- cd ld.so.conf
+>- cat *.conf
+>- sudo rsync -l  * /usr/local/bin/
+>-  sudo rsync -l  * /lib 才好使
