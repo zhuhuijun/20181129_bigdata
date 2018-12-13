@@ -29,4 +29,20 @@ hadoop discp hdfs://namenode1/foo hafs://namenode2/foo
 ```
 
 #### 3、归档
->- hadoop archive -archiveName  my.har -p  /user/ubuntu /user/my
+>- hadoop archive -archiveName  my.har -p  /user/ubuntu /user/my --没有压缩，存了双份这是个问题啊
+>- hdfs dfs -lsr har:///user/my/my.har
+>- hdfs dfs -cp har:///user/my/my.har /user/your --接档
+>- hdfs dfs -rmr /user/your
+
+#### 4、数据完整性
+>- 数据被损坏的可能性
+>- checksum 校验和进行校验确认文件是否损坏，判断字节数组
+>- 一般校验没有纠错机制
+>- CRC-32 循环冗余校验 得到一个32位的整数校验和
+>- 校验和对指定的字节数进行校验 io.bytes.per.checksum=512字节 属性不能 大于 io.file.buffer.size=4096 缓冲器的大小
+>- 数据写入时由最后一个节点负责验证校验
+>- datanode 在后台开启线程 datablockscanner 进行监控
+#### 5、压缩解压缩
+>- ZipInputStream 解压缩
+>- ZipOutputStream 压缩
+>- ZipEntry 压缩条目
