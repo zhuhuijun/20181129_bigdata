@@ -1,0 +1,7 @@
+算法                  压缩空间                    压缩时间          解压时间
+DEFLATE
+Gzip
+Bzip2
+LZO
+LZ4
+Snappy
