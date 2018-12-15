@@ -104,4 +104,14 @@ $> source /etc/environment
 
 ```
 $>sudo apt-cache search  snappy | grep snappy
+$>sudo apt-get install snappy1
+
 ```
+
+#### maven 使用
+
+> 1、mvn clean //删除target
+> 2、mvn test //测试
+> 3.mvn compile  //编译
+> 4.mvn package  //打包
+> 5.mvn install //安装
