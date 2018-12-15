@@ -45,7 +45,7 @@ public class TestCodecPool
 		Decompressor dcomp = CodecPool.getDecompressor(codec);
 
 		CompressionInputStream cin = codec
-				.createInputStream(new FileInputStream("/home/ubuntu/Desktop/ddtest2.deflate"), dcomp);
+				.createInputStream(new FileInputStream("/home/ubuntu/Desktop/ddtest2..deflate"), dcomp);
 		IOUtils.copyBytes(cin, new FileOutputStream("/home/ubuntu/Desktop/fsfsfsfsf1212.pdf"), 1024);
 		cin.close();
 		CodecPool.returnDecompressor(dcomp);
