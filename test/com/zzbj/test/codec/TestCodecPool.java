@@ -37,7 +37,7 @@ public class TestCodecPool
 	 * @throws FileNotFoundException
 	 * @throws Exception
 	 */
-	public void main(String[] args) throws FileNotFoundException, Exception
+	public static void main(String[] args) throws FileNotFoundException, Exception
 	{
 		Configuration conf = new Configuration();
 		Class codeclazz = DeflateCodec.class;
