@@ -26,6 +26,7 @@ public class TestCodecPool
 				.createOutputStream(new FileOutputStream("/home/ubuntu/Desktop/ddtest2.deflate"), compressor);
 		IOUtils.copyBytes(new FileInputStream("/home/ubuntu/Desktop/20181212.pdf"), cos, 1024);
 		cos.finish();
+		CodecPool.returnCompressor(compressor);
 		System.out.println("over");
 	}
 }
