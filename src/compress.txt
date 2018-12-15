@@ -1,16 +1,10 @@
-<<<<<<< HEAD
 算法                  压缩空间                    压缩时间          解压时间
 DEFLATE
 Gzip
 Bzip2
 LZO
 LZ4
-=======
-算法                  压缩空间                    压缩时间          解压时间
-DEFLATE
-Gzip
-Bzip2
-LZO
-LZ4
->>>>>>> d3ae47af51fce0521960e12814db3229de56de70
 Snappy
+空间效能： Bzip2 > deflate > Gzip > lzo > lz4 > snappy
+压缩时间:  lz4 >   snappy  > lzo > gzip > deflate > bzip2
+解压时间   lzo > gzip > lz4 > snappy > deflate > bzip2
