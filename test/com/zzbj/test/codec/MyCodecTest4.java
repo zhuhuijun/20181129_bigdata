@@ -14,6 +14,7 @@ import org.apache.hadoop.io.compress.CompressionCodec;
 import org.apache.hadoop.io.compress.CompressionInputStream;
 import org.apache.hadoop.io.compress.CompressionOutputStream;
 import org.apache.hadoop.io.compress.Compressor;
+import org.apache.hadoop.io.compress.Decompressor;
 import org.apache.hadoop.io.compress.DeflateCodec;
 import org.apache.hadoop.io.compress.GzipCodec;
 import org.apache.hadoop.io.compress.Lz4Codec;
@@ -76,17 +77,20 @@ public class MyCodecTest4
 	public static void main(String[] args) throws Exception
 	{
 		@SuppressWarnings("deprecation")
-		Class[] codec = { DeflateCodec.class, GzipCodec.class, BZip2Codec.class,LzoCodec.class, SnappyCodec.class, Lz4Codec.class };
+		Class[] codec = { DeflateCodec.class, GzipCodec.class, BZip2Codec.class, LzoCodec.class, SnappyCodec.class,
+				Lz4Codec.class };
 		for (Class codeclazz : codec)
 		{
 			Compress(codeclazz);
 			DeCompress(codeclazz);
 		}
 	}
+
 	/**
 	 * pool
-	 * @throws Exception 
-	 * @throws FileNotFoundException 
+	 * 
+	 * @throws Exception
+	 * @throws FileNotFoundException
 	 */
 	@Test
 	public void testCodecPool() throws FileNotFoundException, Exception
@@ -94,13 +98,13 @@ public class MyCodecTest4
 		Configuration conf = new Configuration();
 		Class codeclazz = DeflateCodec.class;
 		CompressionCodec codec = (CompressionCodec) ReflectionUtils.newInstance(codeclazz, conf);
-		Compressor compressor = CodecPool.getCompressor(codec);
-		
-		
-		CompressionOutputStream cos = codec.createOutputStream(new FileOutputStream("/home/ubuntu/Desktop/ddtest2.deflate"), compressor);
-		IOUtils.copyBytes(	new FileInputStream("/home/ubuntu/Desktop/20181212.pdf"), cos, 1024);
-		cos.finish();
+		Decompressor dcomp = CodecPool.getDecompressor(codec);
+
+		CompressionInputStream cin = codec
+				.createInputStream(new FileInputStream("/home/ubuntu/Desktop/ddtest2.deflate"), dcomp);
+		IOUtils.copyBytes(cin, new FileOutputStream("/home/ubuntu/Desktop/fsfsfsfsf1212.pdf"), 1024);
+		cin.close();
+		CodecPool.returnDecompressor(dcomp);
 		System.out.println("over");
 	}
 }
-
