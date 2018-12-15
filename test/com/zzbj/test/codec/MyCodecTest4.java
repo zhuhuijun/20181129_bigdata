@@ -19,6 +19,8 @@ import org.apache.hadoop.util.ReflectionUtils;
 import org.apache.log4j.chainsaw.Main;
 import org.junit.Test;
 
+import com.hadoop.compression.lzo.LzoCodec;
+
 public class MyCodecTest4
 {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -71,7 +73,7 @@ public class MyCodecTest4
 	@Test
 	public static void main(String[] args) throws Exception
 	{
-		Class[] codec = { DeflateCodec.class, GzipCodec.class, BZip2Codec.class, SnappyCodec.class, Lz4Codec.class };
+		Class[] codec = { DeflateCodec.class, GzipCodec.class, BZip2Codec.class, Lz4Codec.class ,LzoCodec.class, SnappyCodec.class};
 		for (Class codeclazz : codec)
 		{
 			Compress(codeclazz);
