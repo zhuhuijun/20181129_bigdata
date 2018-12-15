@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.IOUtils;
@@ -19,10 +18,10 @@ import org.apache.hadoop.io.compress.DeflateCodec;
 import org.apache.hadoop.io.compress.GzipCodec;
 import org.apache.hadoop.io.compress.Lz4Codec;
 import org.apache.hadoop.io.compress.SnappyCodec;
-import org.apache.hadoop.io.compress.bzip2.Bzip2Compressor;
 import org.apache.hadoop.util.ReflectionUtils;
-import org.apache.log4j.chainsaw.Main;
 import org.junit.Test;
+
+import com.hadoop.compression.lzo.LzoCodec;
 
 public class MyCodecTest4
 {
@@ -76,7 +75,8 @@ public class MyCodecTest4
 	@Test
 	public static void main(String[] args) throws Exception
 	{
-		Class[] codec = { DeflateCodec.class, GzipCodec.class, BZip2Codec.class, SnappyCodec.class, Lz4Codec.class };
+		@SuppressWarnings("deprecation")
+		Class[] codec = { DeflateCodec.class, GzipCodec.class, BZip2Codec.class,LzoCodec.class, SnappyCodec.class, Lz4Codec.class };
 		for (Class codeclazz : codec)
 		{
 			Compress(codeclazz);
