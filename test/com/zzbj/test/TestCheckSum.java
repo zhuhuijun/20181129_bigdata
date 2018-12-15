@@ -1,4 +1,3 @@
-
 package com.zzbj.test;
 
 import java.io.IOException;
@@ -31,4 +30,3 @@ public class TestCheckSum
 	}
 
 }
-
