@@ -5,3 +5,6 @@ Bzip2
 LZO
 LZ4
 Snappy
+空间效能： Bzip2 > deflate > Gzip > lzo > lz4 > snappy
+压缩时间:  lz4 >   snappy  > lzo > gzip > deflate > bzip2
+解压时间   lzo > gzip > lz4 > snappy > deflate > bzip2

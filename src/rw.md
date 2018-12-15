@@ -56,3 +56,52 @@ hadoop discp hdfs://namenode1/foo hafs://namenode2/foo
 >- cat *.conf
 >- sudo rsync -l  * /usr/local/bin/
 >-  sudo rsync -l  * /lib 才好使
+
+#### hadoop checknative -a
+>- 1、检查本地库的安装情况
+
+```
+Native library checking:
+hadoop:  true /apps/hadoop-2.7.2/lib/native/libhadoop.so.1.0.0
+zlib:    true /lib/x86_64-linux-gnu/libz.so.1
+snappy:  false 
+lz4:     true revision:99
+bzip2:   false 
+openssl: false Cannot load libcrypto.so (libcrypto.so: cannot open shared object file: No such file or directory)!
+
+```
+>- 2、安装lzo2.06版本
+
+```
+1、下载lzo2.06的版本
+2、./configure --enable-shared
+3、make check
+4、sudo make & make install
+5、 find /usr/local/lib | grep lzo 
+二、hadoop-lzo-master下载
+https://github.com/twitter/hadoop-lzo.git
+1、安装lzo-2.6库
+2、编译hadoop-lzo
+3、设置环境变量
+$> C_INCLUDE_PATH=/usr/local/include 
+$> LIBRARY_PATH=/usr/local/lib
+$> mvn clean test
+将lzo.so的文件从、usr/local/lib copy到 /lib
+$>cd /usr/local/lib
+$>rsync -l *lzo* root@s100:/lib/
+$> mvn clean package
+
+
+$> ln -s /apps/maven-3 maven
+4、配置环境变量
+M2_HOME=/apps/maven
+PATH=...:/apps/maven/bin
+$> source /etc/environment
+
+```
+
+#### snappy
+
+```
+$>sudo apt-cache search  snappy | grep snappy
+```
